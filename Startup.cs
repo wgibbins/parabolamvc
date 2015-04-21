@@ -13,11 +13,11 @@ namespace HelloMvc
             app.UseServices(services =>
             {
                 services.AddMvc();
+                
             });
 
             app.UseMvc();
-
-          //  app.UseWelcomePage();
+            app.UseStaticFiles();
         }       
     }
 }
