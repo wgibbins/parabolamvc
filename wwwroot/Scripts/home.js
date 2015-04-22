@@ -6,10 +6,10 @@ $(function() {
     $("#go").click(clickHandler);
     canvas = document.getElementById("parabolaCanvas");
     ctx = canvas.getContext("2d");
-    offsetX = canvas.width / 2;
+    offsetX = canvas.width / 2; // Make conceptual 0,0 the center
     offsetY = canvas.height / 2;
-    minX = -60; // -offsetX;
-    maxX = 60; // offsetX;
+    minX = -150; // -offsetX;
+    maxX = 150; // offsetX;
     drawLine(0, offsetY, canvas.width, offsetY);
     drawLine(offsetX, 0, offsetX, canvas.height);	
 });
@@ -54,6 +54,9 @@ function drawLine(startX, startY, endX, endY) {
 function drawPoint(data) {
     var x = offsetX + data[0];
     var y = offsetY - data[1];
-    ctx.fillStyle = '#00FF00';
-    ctx.fillRect(x, y, 3, 3);
+    // only draw the point if it is on the screen.
+    if (y >= 0 && y < (offsetY * 2)) {
+        ctx.fillStyle = '#00FF00';
+        ctx.fillRect(x, y, 3, 3);
+    }
 }
